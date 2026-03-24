@@ -1,10 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>My First Website</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parker Doerr</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #0f0f13;
+        color: #e8e8f0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Header ── */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        background: rgba(15, 15, 19, 0.85);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 0 2rem;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header .logo {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: #fff;
+      }
+
+      header nav a {
+        color: #a0a0b8;
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-left: 1.75rem;
+        transition: color 0.2s;
+      }
+
+      header nav a:hover { color: #fff; }
+
+      /* ── Hero ── */
+      .hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 2rem;
+        background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+      }
+
+      .hero .badge {
+        display: inline-block;
+        background: rgba(99, 102, 241, 0.15);
+        border: 1px solid rgba(99, 102, 241, 0.4);
+        color: #a5b4fc;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        margin-bottom: 2rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 7vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero p {
+        max-width: 520px;
+        font-size: 1.1rem;
+        color: #9090a8;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #6366f1;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.75rem 1.75rem;
+        border-radius: 8px;
+        transition: background 0.2s, transform 0.15s;
+      }
+
+      .hero .cta:hover {
+        background: #4f46e5;
+        transform: translateY(-1px);
+      }
+
+      /* ── Footer ── */
+      footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        font-size: 0.82rem;
+        color: #55556a;
+      }
+
+      footer a {
+        color: #55556a;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      footer a:hover { color: #a5b4fc; }
+
+      footer .links { display: flex; gap: 1.25rem; }
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <p>This is my first webpage. It's going to get a lot cooler soon.</p>
+
+    <header>
+      <span class="logo">Parker Doerr</span>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="badge">Welcome</span>
+      <h1>Parker Doerr</h1>
+      <p>Building things on the web. This site is just getting started — more coming soon.</p>
+      <a class="cta" href="#contact">Get in touch</a>
+    </section>
+
+    <footer>
+      <span>&copy; 2026 Parker Doerr</span>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+
   </body>
 </html>
