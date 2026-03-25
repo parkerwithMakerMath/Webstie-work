@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutoring — Maker Math</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --navy: #1a3a5c;
+        --navy-dark: #112741;
+        --orange: #f97316;
+        --orange-dark: #ea580c;
+        --text: #111827;
+        --muted: #6b7280;
+        --light: #f8fafc;
+        --border: #e5e7eb;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--white);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Header ── */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 2.5rem;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+      }
+
+      .logo-wrap { display: flex; align-items: center; text-decoration: none; }
+      .logo-wrap img { height: 48px; width: auto; }
+
+      header nav { display: flex; align-items: center; gap: 0.25rem; }
+
+      header nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.45rem 1rem;
+        border-radius: 999px;
+        transition: background 0.18s, color 0.18s;
+      }
+
+      header nav a:hover { background: #fff3e8; color: var(--orange); }
+      header nav a.active { background: #fff3e8; color: var(--orange); font-weight: 600; }
+
+      header nav a.nav-cta {
+        background: var(--orange);
+        color: #fff;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+      header nav a.nav-cta:hover { background: var(--orange-dark); color: #fff; }
+
+      /* ── Hero ── */
+      .hero {
+        background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #1e4d7a 100%);
+        color: #fff;
+        padding: 6rem 2rem 5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(249,115,22,0.22) 0%, transparent 65%);
+      }
+
+      .hero > * { position: relative; }
+
+      .hero .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(249,115,22,0.2);
+        border: 1px solid rgba(249,115,22,0.4);
+        color: #fbbf80;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.4rem 1.1rem;
+        border-radius: 999px;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.25rem, 5vw, 3.75rem);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.1rem;
+      }
+
+      .hero h1 span { color: var(--orange); }
+
+      .hero p {
+        font-size: 1.1rem;
+        color: rgba(255,255,255,0.72);
+        max-width: 560px;
+        margin: 0 auto 2.25rem;
+        line-height: 1.75;
+      }
+
+      .btn-orange {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--orange);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 0.9rem 2.25rem;
+        border-radius: 999px;
+        box-shadow: 0 4px 22px rgba(249,115,22,0.45);
+        transition: background 0.2s, transform 0.15s;
+        letter-spacing: 0.01em;
+      }
+
+      .btn-orange:hover { background: var(--orange-dark); transform: translateY(-2px); }
+
+      /* ── Sections ── */
+      section { padding: 5rem 2rem; }
+      .container { max-width: 1100px; margin: 0 auto; }
+
+      .section-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 0.75rem;
+      }
+
+      .section-heading {
+        font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        color: var(--text);
+        line-height: 1.25;
+        margin-bottom: 1.25rem;
+      }
+
+      /* ── What We Offer ── */
+      .offer { background: var(--white); }
+
+      .offer-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .offer-list {
+        list-style: none;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .offer-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text);
+      }
+
+      .offer-list li::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--orange);
+        flex-shrink: 0;
+      }
+
+      .offer-panel {
+        background: var(--light);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 2rem;
+      }
+
+      .offer-panel h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .offer-panel ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+
+      .offer-panel ul li {
+        font-size: 0.9rem;
+        color: var(--muted);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65rem;
+        line-height: 1.6;
+      }
+
+      .offer-panel ul li span.check {
+        color: var(--orange);
+        font-weight: 800;
+        font-size: 1rem;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      /* ── How it works ── */
+      .how { background: var(--light); }
+
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 1.25rem;
+        margin-top: 2.5rem;
+      }
+
+      .step-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.75rem 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+
+      .step-card:hover {
+        box-shadow: 0 10px 32px rgba(26,58,92,0.1);
+        transform: translateY(-3px);
+      }
+
+      .step-card .num {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--orange);
+        line-height: 1;
+        margin-bottom: 0.75rem;
+      }
+
+      .step-card h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+      }
+
+      .step-card p {
+        font-size: 0.875rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      /* ── 3D section ── */
+      .printing { background: var(--white); }
+
+      .printing-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .printing-text p {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+
+      .printing-example {
+        background: linear-gradient(135deg, #fff3e8 0%, #ffe4cc 100%);
+        border: 1px solid #fcd9b5;
+        border-radius: 20px;
+        padding: 2.25rem;
+      }
+
+      .printing-example .eg-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--orange-dark);
+        margin-bottom: 0.75rem;
+      }
+
+      .printing-example h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+      }
+
+      .printing-example p {
+        font-size: 0.9rem;
+        color: #92400e;
+        line-height: 1.75;
+      }
+
+      .printing-example .model-icon {
+        font-size: 3rem;
+        margin: 1rem 0;
+        text-align: center;
+      }
+
+      /* ── Callout ── */
+      .callout {
+        background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+        color: #fff;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .callout-inner {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .callout .quote-mark {
+        font-size: 4rem;
+        color: var(--orange);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .callout blockquote {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 700;
+        line-height: 1.55;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+      }
+
+      .callout p {
+        font-size: 1rem;
+        color: rgba(255,255,255,0.65);
+        line-height: 1.7;
+      }
+
+      /* ── CTA ── */
+      .cta-section {
+        background: var(--white);
+        text-align: center;
+        padding: 5rem 2rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .cta-section h2 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      .cta-section p {
+        font-size: 1.05rem;
+        color: var(--muted);
+        max-width: 480px;
+        margin: 0 auto 2.25rem;
+        line-height: 1.7;
+      }
+
+      /* ── Footer ── */
+      footer {
+        background: #0f2235;
+        color: rgba(255,255,255,0.55);
+        padding: 3rem 2.5rem 2rem;
+      }
+
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 3rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .footer-brand img { height: 42px; width: auto; margin-bottom: 1rem; }
+      .footer-brand p { font-size: 0.875rem; line-height: 1.7; max-width: 280px; }
+
+      .footer-col h4 {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 1rem;
+      }
+
+      .footer-col a {
+        display: block;
+        color: rgba(255,255,255,0.55);
+        text-decoration: none;
+        font-size: 0.875rem;
+        margin-bottom: 0.55rem;
+        transition: color 0.2s;
+      }
+
+      .footer-col a:hover { color: var(--orange); }
+      .footer-col p { font-size: 0.875rem; margin-bottom: 0.5rem; line-height: 1.6; }
+
+      .footer-bottom {
+        max-width: 1100px;
+        margin: 1.5rem auto 0;
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        header { padding: 0 1.25rem; }
+        header nav a:not(.nav-cta) { display: none; }
+        .offer-grid, .printing-inner { grid-template-columns: 1fr; gap: 2rem; }
+        .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <a class="logo-wrap" href="index.html">
+        <img src="logo.png" alt="Maker Math" />
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="tutoring.html" class="active">Tutoring</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <span class="eyebrow">&#127891; One-on-One</span>
+      <h1>Tutoring That Actually <span>Sticks</span></h1>
+      <p>We replace the worksheet with a 3D printer and replace passive memorization with active creation. Kindergarten through calculus — in person or online.</p>
+      <a class="btn-orange" href="contact.html">Get Started &rarr;</a>
+    </section>
+
+    <!-- What we offer -->
+    <section class="offer">
+      <div class="container">
+        <div class="offer-grid">
+          <div>
+            <div class="section-label">What We Offer</div>
+            <h2 class="section-heading">Everything in one program</h2>
+            <ul class="offer-list">
+              <li>One-on-one math tutoring</li>
+              <li>Kindergarten through calculus</li>
+              <li>Mechanical 3D modeling</li>
+              <li>3D printing instruction</li>
+              <li>Custom manipulative design</li>
+              <li>In-person &amp; online sessions</li>
+            </ul>
+          </div>
+          <div class="offer-panel">
+            <h3>&#128197; How Sessions Work</h3>
+            <ul>
+              <li><span class="check">&#10003;</span> Two 1-hour sessions per week</li>
+              <li><span class="check">&#10003;</span> Students keep every manipulative they make</li>
+              <li><span class="check">&#10003;</span> Online students get tools mailed directly to them</li>
+              <li><span class="check">&#10003;</span> Each lesson tailored to the child's current level</li>
+              <li><span class="check">&#10003;</span> We only advance when topics are fully mastered</li>
+              <li><span class="check">&#10003;</span> No homework packets — just hands-on problem solving</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how">
+      <div class="container">
+        <div class="section-label">The Process</div>
+        <h2 class="section-heading">From concept to creation</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="num">01</div>
+            <h4>Assess the Student</h4>
+            <p>We start by understanding exactly where your child is — no assumptions, no guessing. Every plan is built from scratch.</p>
+          </div>
+          <div class="step-card">
+            <div class="num">02</div>
+            <h4>Teach the Concept</h4>
+            <p>We introduce math concepts through conversation, exploration, and real-world context — not drills.</p>
+          </div>
+          <div class="step-card">
+            <div class="num">03</div>
+            <h4>Design a Tool</h4>
+            <p>The student designs a 3D object that physically represents or demonstrates the math concept they're learning.</p>
+          </div>
+          <div class="step-card">
+            <div class="num">04</div>
+            <h4>Print &amp; Explore</h4>
+            <p>We print the model and use it to reinforce learning. Hold it, measure it, explain it — the concept becomes real.</p>
+          </div>
+          <div class="step-card">
+            <div class="num">05</div>
+            <h4>Master It</h4>
+            <p>Only once full mastery is confirmed do we move on. No student is left with gaps in their foundation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Printing section -->
+    <section class="printing">
+      <div class="container">
+        <div class="printing-inner">
+          <div class="printing-text">
+            <div class="section-label">Forget Counting Bears &amp; Popsicle Sticks</div>
+            <h2 class="section-heading">Math tools built by the student, for the student</h2>
+            <p>Traditional manipulatives are generic. A bear counter means the same thing to every kid. But a triangle model that your child designed and printed themselves? That's a different story entirely.</p>
+            <p>When a student builds a 3D triangle and holds it in their hand, they physically feel why the interior angles sum to 180 degrees. They see how the sides relate to each other. No amount of worksheet repetition can recreate that moment of understanding.</p>
+          </div>
+          <div class="printing-example">
+            <div class="eg-label">Example Lesson</div>
+            <div class="model-icon">&#9651;</div>
+            <h3>Triangle Angle Sum — 180°</h3>
+            <p>Students design a custom triangle in CAD software, then 3D print it. Using the physical model, they measure each angle, add them together, and discover that it always equals 180° — no matter what kind of triangle they made. The rule isn't told to them. They find it themselves.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote callout -->
+    <section class="callout">
+      <div class="callout-inner">
+        <div class="quote-mark">&#8220;</div>
+        <blockquote>Where learning meets innovation — when your child has tools to create and explore, young minds become true makers.</blockquote>
+        <p>This is the Maker Math promise. Every session, every print, every breakthrough.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to build something?</h2>
+        <p>Tell us about your child and we'll design a plan that fits. Sessions available in Camp Hill, PA, Avon, NC, or anywhere online.</p>
+        <a class="btn-orange" href="contact.html">Get Started &rarr;</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Maker Math" />
+          <p>Where Learning Meets Innovation. One-on-one math tutoring powered by 3D printing and hands-on tools.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="tutoring.html">Tutoring</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Locations</h4>
+          <p>&#128205; Camp Hill, PA</p>
+          <p>&#128205; Avon, NC</p>
+          <p>&#127760; Nationally Online</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Maker Math. All rights reserved.</span>
+        <span>Where Learning Meets Innovation</span>
+      </div>
+    </footer>
+
+  </body>
+</html>

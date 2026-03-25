@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About — Maker Math</title>
+    <title>Resources — Maker Math</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -126,7 +126,7 @@
         line-height: 1.75;
       }
 
-      /* ── Section base ── */
+      /* ── Sections ── */
       section { padding: 5rem 2rem; }
       .container { max-width: 1100px; margin: 0 auto; }
 
@@ -148,26 +148,100 @@
         margin-bottom: 1.25rem;
       }
 
-      /* ── Mission ── */
-      .mission { background: var(--white); }
+      /* ── Tools grid ── */
+      .tools { background: var(--white); }
 
-      .mission-grid {
+      .tools-intro {
+        max-width: 680px;
+        margin-bottom: 3rem;
+      }
+
+      .tools-intro p {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-top: 1rem;
+      }
+
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+
+      .tool-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 2rem;
+        transition: box-shadow 0.22s, transform 0.2s, border-color 0.22s;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+
+      .tool-card:hover {
+        box-shadow: 0 12px 40px rgba(26,58,92,0.12);
+        border-color: #d1e3f6;
+        transform: translateY(-4px);
+      }
+
+      .tool-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #fff3e8, #ffe4cc);
+        border: 1px solid #fcd9b5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .tool-card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 0.6rem;
+      }
+
+      .tool-card p {
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .tool-badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #fff3e8;
+        color: var(--orange-dark);
+        border: 1px solid #fcd9b5;
+        border-radius: 999px;
+        padding: 0.2rem 0.65rem;
+        margin-bottom: 0.75rem;
+      }
+
+      /* ── Why it works ── */
+      .why { background: var(--light); }
+
+      .why-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: center;
       }
 
-      .mission-text p {
+      .why-text p {
         font-size: 1rem;
         color: var(--muted);
         line-height: 1.85;
         margin-bottom: 1.25rem;
       }
 
-      .mission-text p:last-child { margin-bottom: 0; }
-
-      .mission-visual {
+      .why-visual {
         background: linear-gradient(135deg, var(--navy) 0%, #1e4d7a 100%);
         border-radius: 24px;
         padding: 2.5rem;
@@ -175,103 +249,59 @@
         box-shadow: 0 20px 60px rgba(26,58,92,0.25);
       }
 
-      .mission-visual blockquote {
-        font-size: 1.3rem;
-        font-weight: 700;
-        line-height: 1.55;
-        font-style: italic;
-        color: #fff;
-        border-left: 4px solid var(--orange);
-        padding-left: 1.25rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .mission-visual .stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-
-      .stat {
-        background: rgba(255,255,255,0.08);
-        border-radius: 12px;
-        padding: 1rem;
-        text-align: center;
-      }
-
-      .stat-num {
-        font-size: 1.75rem;
-        font-weight: 900;
-        color: var(--orange);
-        line-height: 1;
-      }
-
-      .stat-label {
-        font-size: 0.78rem;
-        color: rgba(255,255,255,0.65);
-        margin-top: 0.3rem;
-      }
-
-      /* ── Approach blocks ── */
-      .approach { background: var(--light); }
-
-      .approach-blocks {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin-top: 3rem;
-      }
-
-      .approach-block {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-      }
-
-      .approach-block .icon {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .approach-block h3 {
+      .why-visual h3 {
         font-size: 1.1rem;
         font-weight: 700;
-        color: var(--text);
-        margin-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
       }
 
-      .approach-block p {
-        font-size: 0.925rem;
-        color: var(--muted);
-        line-height: 1.8;
+      .why-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
       }
 
-      /* ── Closing ── */
-      .closing {
+      .why-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.8);
+        line-height: 1.6;
+      }
+
+      .why-list li .dot {
+        width: 8px;
+        height: 8px;
+        background: var(--orange);
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
+
+      /* ── CTA ── */
+      .cta-section {
         background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
         color: #fff;
         text-align: center;
         padding: 5rem 2rem;
       }
 
-      .closing h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
+      .cta-section h2 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
         font-weight: 800;
         letter-spacing: -0.025em;
         margin-bottom: 1rem;
       }
 
-      .closing h2 span { color: var(--orange); }
-
-      .closing p {
+      .cta-section p {
         font-size: 1.05rem;
         color: rgba(255,255,255,0.72);
-        max-width: 540px;
+        max-width: 480px;
         margin: 0 auto 2.25rem;
-        line-height: 1.75;
+        line-height: 1.7;
       }
 
       .btn-orange {
@@ -346,7 +376,8 @@
       @media (max-width: 768px) {
         header { padding: 0 1.25rem; }
         header nav a:not(.nav-cta) { display: none; }
-        .mission-grid, .approach-blocks { grid-template-columns: 1fr; gap: 2rem; }
+        .tools-grid { grid-template-columns: 1fr; }
+        .why-grid { grid-template-columns: 1fr; gap: 2rem; }
         .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
       }
     </style>
@@ -359,96 +390,107 @@
       </a>
       <nav>
         <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
+        <a href="about.html">About</a>
         <a href="tutoring.html">Tutoring</a>
-        <a href="resources.html">Resources</a>
+        <a href="resources.html" class="active">Resources</a>
         <a href="contact.html" class="nav-cta">Contact Us</a>
       </nav>
     </header>
 
     <!-- Hero -->
     <section class="hero">
-      <span class="eyebrow">&#128161; Our Story</span>
-      <h1>Learning Meets <span>Innovation</span></h1>
-      <p>We believe every child has the ability to love math — they just need the right tools to discover it.</p>
+      <span class="eyebrow">&#128736; Tools &amp; Technology</span>
+      <h1>The <span>Tools</span> Behind the Magic</h1>
+      <p>Every lesson at Maker Math is powered by real technology — the same tools used by engineers, designers, and makers around the world.</p>
     </section>
 
-    <!-- Mission -->
-    <section class="mission">
+    <!-- Tools -->
+    <section class="tools">
       <div class="container">
-        <div class="mission-grid">
-          <div class="mission-text">
-            <div class="section-label">Our Mission</div>
-            <h2 class="section-heading">Encouraging curiosity through top-notch math instruction</h2>
-            <p>We are not after-school homework tutors. We take math away from the workbooks and explore the real world through hands-on problem solving. We assess each child's level and tailor instruction to their individual needs — because no two students learn the same way.</p>
-            <p>Our students learn how to model and produce 3D printed objects designed to teach fundamental math concepts. They walk away not just with knowledge, but with physical tools they designed themselves.</p>
-          </div>
-          <div class="mission-visual">
-            <blockquote>"At Maker Math, we're not just teaching math. We're building visionaries."</blockquote>
-            <div class="stats">
-              <div class="stat">
-                <div class="stat-num">K–12+</div>
-                <div class="stat-label">Grade Range</div>
-              </div>
-              <div class="stat">
-                <div class="stat-num">2</div>
-                <div class="stat-label">Sessions Per Week</div>
-              </div>
-              <div class="stat">
-                <div class="stat-num">3</div>
-                <div class="stat-label">Locations</div>
-              </div>
-              <div class="stat">
-                <div class="stat-num">1:1</div>
-                <div class="stat-label">Always One-on-One</div>
-              </div>
-            </div>
-          </div>
+        <div class="tools-intro">
+          <div class="section-label">What We Use</div>
+          <h2 class="section-heading">Professional-grade tools, accessible for all ages</h2>
+          <p>We believe students should work with real tools, not toy versions. From CAD software to 3D printers to math visualization platforms, every resource we use is chosen because it genuinely accelerates understanding.</p>
         </div>
-      </div>
-    </section>
+        <div class="tools-grid">
 
-    <!-- Approach blocks -->
-    <section class="approach">
-      <div class="container">
-        <div class="section-label" style="text-align:center;">How We Work</div>
-        <h2 class="section-heading" style="text-align:center; max-width:600px; margin:0 auto 0.5rem;">A different kind of math education</h2>
-        <div class="approach-blocks">
-
-          <div class="approach-block">
-            <div class="icon">&#128424;</div>
-            <h3>3D Printing as a Learning Tool</h3>
-            <p>As students design, print, and bring creations to life using math concepts, they naturally absorb physics, engineering, and science too. The printer isn't just a gadget — it's the bridge between abstract math and the physical world.</p>
+          <div class="tool-card">
+            <div class="tool-icon">&#128424;</div>
+            <div class="tool-badge">Hardware</div>
+            <h3>3D Printers</h3>
+            <p>We use FDM (fused deposition modeling) 3D printers to bring student designs to life. Students watch their mathematical models go from a screen to a physical object they can hold and study.</p>
           </div>
 
-          <div class="approach-block">
-            <div class="icon">&#129504;</div>
-            <h3>Built for Different Learners</h3>
-            <p>Maker Math methods work especially well for kids with dyslexia, dyscalculia, and ADHD. Our approach taps into their unique strengths and love of experiential learning — turning what others call a challenge into a genuine superpower.</p>
+          <div class="tool-card">
+            <div class="tool-icon">&#128190;</div>
+            <div class="tool-badge">Software</div>
+            <h3>CAD Programs</h3>
+            <p>Students learn computer-aided design software to model their manipulatives before printing. Designing in CAD reinforces spatial reasoning, geometry, and precision measurement — all core math skills.</p>
           </div>
 
-          <div class="approach-block">
-            <div class="icon">&#127919;</div>
-            <h3>Mastery Before Moving On</h3>
-            <p>We never advance until a topic is fully understood. No rushing, no gaps left behind. Each lesson builds on a solid foundation — and the student sets the pace.</p>
+          <div class="tool-card">
+            <div class="tool-icon">&#128200;</div>
+            <div class="tool-badge">Software</div>
+            <h3>Math Software</h3>
+            <p>We use interactive math platforms to visualize concepts, explore functions, and bridge the gap between digital and physical learning. Abstract ideas become visual, interactive, and explorable.</p>
           </div>
 
-          <div class="approach-block">
-            <div class="icon">&#127760;</div>
-            <h3>In-Person &amp; Online</h3>
-            <p>We serve families in Camp Hill, PA and Avon, NC in person, and students everywhere nationally online. Online students receive their custom 3D printed tools by mail so they never miss out on the hands-on experience.</p>
+          <div class="tool-card">
+            <div class="tool-icon">&#9881;</div>
+            <div class="tool-badge">Materials</div>
+            <h3>Filament &amp; Materials</h3>
+            <p>Students work with PLA filament in a range of colors. Choosing colors and materials is part of the design process — and it makes the finished manipulative feel personal and meaningful.</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-icon">&#128101;</div>
+            <div class="tool-badge">Format</div>
+            <h3>Online Collaboration Tools</h3>
+            <p>Our online students use screen-sharing and collaborative design tools so the experience is as hands-on as in-person sessions. Finished prints are mailed directly to the student's home.</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-icon">&#128218;</div>
+            <div class="tool-badge">Curriculum</div>
+            <h3>Custom Lesson Plans</h3>
+            <p>No pre-packaged curriculum here. Every lesson plan is written specifically for your child based on their assessed level, learning style, and the concepts they're working to master.</p>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- Closing -->
-    <section class="closing">
+    <!-- Why it works -->
+    <section class="why">
       <div class="container">
-        <h2>We're not just teaching math.<br/>We're building <span>visionaries</span>.</h2>
-        <p>Ready to see what your child is capable of when they have the right tools in their hands?</p>
-        <a class="btn-orange" href="contact.html">Let's Get Started &rarr;</a>
+        <div class="why-grid">
+          <div class="why-text">
+            <div class="section-label">Why It Works</div>
+            <h2 class="section-heading">Hands-on learning isn't a trend — it's science</h2>
+            <p>Research consistently shows that kinesthetic and visual learning dramatically improves retention, especially for students with learning differences. When a child can hold a concept in their hands, they stop trying to memorize it and start truly understanding it.</p>
+            <p>Every tool we use is chosen because it creates a physical or visual connection to an abstract idea. That connection is what makes Maker Math different — and what makes the learning last.</p>
+          </div>
+          <div class="why-visual">
+            <h3>&#128161; What our approach delivers:</h3>
+            <ul class="why-list">
+              <li><span class="dot"></span> Deep conceptual understanding, not surface-level memorization</li>
+              <li><span class="dot"></span> Improved spatial reasoning and geometric intuition</li>
+              <li><span class="dot"></span> Confidence for students who've struggled with traditional methods</li>
+              <li><span class="dot"></span> Exposure to engineering and design thinking</li>
+              <li><span class="dot"></span> A tangible collection of tools the student built themselves</li>
+              <li><span class="dot"></span> Skills that transfer directly into STEM coursework</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Want to learn more?</h2>
+        <p>Reach out and we'll walk you through exactly which tools we'd use with your child and why.</p>
+        <a class="btn-orange" href="contact.html">Contact Us &rarr;</a>
       </div>
     </section>
 
