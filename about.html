@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Parker Doerr</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #0c0c14;
+        color: #e4e4f0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Header ── */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(12, 12, 20, 0.88);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid #222236;
+        padding: 0 2.5rem;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
+      }
+
+      header .logo {
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #818cf8;
+        text-decoration: none;
+      }
+
+      header nav {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      header nav a {
+        color: #8888aa;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        transition: background 0.18s, color 0.18s;
+      }
+
+      header nav a:hover {
+        background: rgba(129, 140, 248, 0.12);
+        color: #a5b4fc;
+      }
+
+      header nav a.active {
+        background: rgba(129, 140, 248, 0.15);
+        color: #a5b4fc;
+        font-weight: 600;
+      }
+
+      /* ── Page hero ── */
+      .page-hero {
+        padding: 5rem 2rem 3rem;
+        text-align: center;
+        background: radial-gradient(ellipse 60% 50% at 50% -10%, rgba(99, 91, 255, 0.15) 0%, transparent 70%);
+      }
+
+      .page-hero .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(99, 102, 241, 0.15);
+        color: #a5b4fc;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border-radius: 999px;
+        margin-bottom: 1.25rem;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+      }
+
+      .page-hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: #e4e4f0;
+        margin-bottom: 0.75rem;
+      }
+
+      .page-hero p {
+        color: #8888aa;
+        font-size: 1rem;
+        max-width: 480px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* ── Content ── */
+      .content {
+        flex: 1;
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 3rem 2rem 6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      /* ── Bio section ── */
+      .bio-card {
+        background: #13131f;
+        border: 1px solid #222236;
+        border-radius: 20px;
+        padding: 2.25rem;
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+      }
+
+      .avatar {
+        flex-shrink: 0;
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6366f1, #a855f7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+      }
+
+      .bio-text h2 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #e4e4f0;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.35rem;
+      }
+
+      .bio-text .subtitle {
+        font-size: 0.875rem;
+        color: #818cf8;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .bio-text p {
+        font-size: 0.95rem;
+        color: #9999b8;
+        line-height: 1.8;
+      }
+
+      /* ── Section headings ── */
+      .section-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #818cf8;
+        margin-bottom: 1.1rem;
+      }
+
+      /* ── Quick facts ── */
+      .facts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.85rem;
+      }
+
+      .fact {
+        background: #13131f;
+        border: 1px solid #222236;
+        border-radius: 12px;
+        padding: 1.1rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .fact-icon {
+        font-size: 1.25rem;
+        flex-shrink: 0;
+      }
+
+      .fact-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+
+      .fact-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #55556a;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .fact-value {
+        font-size: 0.88rem;
+        color: #c4c4e0;
+        font-weight: 600;
+      }
+
+      /* ── Skills ── */
+      .skills-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .skill-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .skill-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.82rem;
+      }
+
+      .skill-name { font-weight: 600; color: #c4c4e0; }
+      .skill-pct  { color: #55556a; }
+
+      .skill-bar {
+        height: 6px;
+        background: #1e1e30;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .skill-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #6366f1, #a855f7);
+      }
+
+      /* ── Timeline ── */
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .timeline-item {
+        display: flex;
+        gap: 1.25rem;
+        position: relative;
+      }
+
+      .timeline-item:not(:last-child) {
+        padding-bottom: 1.75rem;
+      }
+
+      .tl-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        width: 36px;
+      }
+
+      .tl-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6366f1, #a855f7);
+        box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+        margin-top: 4px;
+        flex-shrink: 0;
+      }
+
+      .tl-line {
+        flex: 1;
+        width: 1px;
+        background: #222236;
+        margin-top: 4px;
+      }
+
+      .tl-body {
+        padding-bottom: 0.25rem;
+      }
+
+      .tl-date {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #818cf8;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 0.25rem;
+      }
+
+      .tl-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #e4e4f0;
+        margin-bottom: 0.25rem;
+      }
+
+      .tl-sub {
+        font-size: 0.82rem;
+        color: #8888aa;
+        margin-bottom: 0.5rem;
+      }
+
+      .tl-desc {
+        font-size: 0.875rem;
+        color: #9999b8;
+        line-height: 1.7;
+      }
+
+      /* ── Interests chips ── */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: #13131f;
+        border: 1px solid #222236;
+        border-radius: 999px;
+        padding: 0.45rem 1rem;
+        font-size: 0.83rem;
+        color: #b0b0cc;
+        font-weight: 500;
+        transition: border-color 0.2s, color 0.2s;
+      }
+
+      .chip:hover {
+        border-color: rgba(129, 140, 248, 0.4);
+        color: #a5b4fc;
+      }
+
+      /* ── CTA ── */
+      .cta-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 0.8rem 2rem;
+        border-radius: 999px;
+        box-shadow: 0 4px 22px rgba(99, 91, 255, 0.45);
+        transition: box-shadow 0.2s, transform 0.15s;
+        letter-spacing: 0.01em;
+      }
+
+      .btn-primary:hover {
+        box-shadow: 0 6px 30px rgba(99, 91, 255, 0.6);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: #a5b4fc;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.8rem 2rem;
+        border-radius: 999px;
+        border: 1.5px solid rgba(129, 140, 248, 0.35);
+        transition: background 0.2s, border-color 0.2s, transform 0.15s;
+        letter-spacing: 0.01em;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(129, 140, 248, 0.1);
+        border-color: rgba(129, 140, 248, 0.6);
+        transform: translateY(-2px);
+      }
+
+      /* responsive */
+      @media (max-width: 560px) {
+        .bio-card { flex-direction: column; align-items: center; text-align: center; }
+        .avatar { width: 72px; height: 72px; font-size: 1.8rem; }
+      }
+
+      /* ── Footer ── */
+      footer {
+        background: #0a0a12;
+        border-top: 1px solid #222236;
+        padding: 1.5rem 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        font-size: 0.82rem;
+        color: #55556a;
+      }
+
+      footer a { color: #55556a; text-decoration: none; transition: color 0.2s; }
+      footer a:hover { color: #818cf8; }
+      footer .links { display: flex; gap: 1.5rem; }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <a class="logo" href="index.html">Parker Doerr</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <div class="page-hero">
+      <span class="badge">&#128100; About Me</span>
+      <h1>Who I Am</h1>
+      <p>A little background on the person behind the code.</p>
+    </div>
+
+    <div class="content">
+
+      <!-- Bio -->
+      <div class="bio-card">
+        <div class="avatar">&#128104;&#8205;&#128187;</div>
+        <div class="bio-text">
+          <h2>Parker Doerr</h2>
+          <div class="subtitle">Software Developer &amp; CS Student &mdash; Minneapolis, MN</div>
+          <p>
+            I'm a computer science student with a deep love for math and a knack for turning
+            ideas into working software. I started writing code in high school when I built a
+            calculator app to help me with homework — turns out I enjoyed building the tool more
+            than doing the homework. Now I spend my time crafting clean web experiences,
+            exploring algorithms, and contributing to open-source projects whenever I can.
+            Outside of code, you'll probably find me on a hiking trail, buried in a linear
+            algebra textbook, or losing sleep over a chess puzzle.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick facts -->
+      <div>
+        <div class="section-label">Quick facts</div>
+        <div class="facts-grid">
+          <div class="fact">
+            <span class="fact-icon">&#127979;</span>
+            <div class="fact-text">
+              <span class="fact-label">Studying</span>
+              <span class="fact-value">Computer Science</span>
+            </div>
+          </div>
+          <div class="fact">
+            <span class="fact-icon">&#128205;</span>
+            <div class="fact-text">
+              <span class="fact-label">Based in</span>
+              <span class="fact-value">Minneapolis, MN</span>
+            </div>
+          </div>
+          <div class="fact">
+            <span class="fact-icon">&#128187;</span>
+            <div class="fact-text">
+              <span class="fact-label">Coding since</span>
+              <span class="fact-value">Age 15</span>
+            </div>
+          </div>
+          <div class="fact">
+            <span class="fact-icon">&#9749;</span>
+            <div class="fact-text">
+              <span class="fact-label">Fuel</span>
+              <span class="fact-value">Cold brew, always</span>
+            </div>
+          </div>
+          <div class="fact">
+            <span class="fact-icon">&#127381;</span>
+            <div class="fact-text">
+              <span class="fact-label">GitHub</span>
+              <span class="fact-value">parkerwithMakerMath</span>
+            </div>
+          </div>
+          <div class="fact">
+            <span class="fact-icon">&#128270;</span>
+            <div class="fact-text">
+              <span class="fact-label">Currently into</span>
+              <span class="fact-value">Web &amp; algorithms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div>
+        <div class="section-label">Skills</div>
+        <div class="skills-group">
+          <div class="skill-row">
+            <div class="skill-meta">
+              <span class="skill-name">HTML &amp; CSS</span>
+              <span class="skill-pct">90%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta">
+              <span class="skill-name">Python</span>
+              <span class="skill-pct">75%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta">
+              <span class="skill-name">React</span>
+              <span class="skill-pct">55%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta">
+              <span class="skill-name">Git &amp; GitHub</span>
+              <span class="skill-pct">85%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div>
+        <div class="section-label">Background</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-left">
+              <div class="tl-dot"></div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-date">2024 &ndash; Present</div>
+              <div class="tl-title">Computer Science, B.S.</div>
+              <div class="tl-sub">University of Minnesota</div>
+              <div class="tl-desc">Focused on software engineering and discrete math. TA for Introduction to Programming in freshman year. Dean's List two semesters running.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-left">
+              <div class="tl-dot"></div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-date">Summer 2024</div>
+              <div class="tl-title">Web Development Intern</div>
+              <div class="tl-sub">Local Tech Startup, Minneapolis</div>
+              <div class="tl-desc">Rebuilt the company's landing page from scratch using vanilla HTML, CSS, and JavaScript. Improved Lighthouse performance score from 61 to 94.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-left">
+              <div class="tl-dot"></div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-date">2022 &ndash; 2024</div>
+              <div class="tl-title">High School</div>
+              <div class="tl-sub">Wayzata High School</div>
+              <div class="tl-desc">Founded the school's first Coding Club. Competed in state-level math olympiad. Built a Python grade-tracking tool used by 120+ students.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-left">
+              <div class="tl-dot"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-date">2020</div>
+              <div class="tl-title">First Line of Code</div>
+              <div class="tl-sub">A calculator app in Python</div>
+              <div class="tl-desc">Built a basic calculator to "save time" on homework. Never looked back.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div>
+        <div class="section-label">Interests</div>
+        <div class="chips">
+          <span class="chip">&#9960; Mathematics</span>
+          <span class="chip">&#128187; Open Source</span>
+          <span class="chip">&#9820; Chess</span>
+          <span class="chip">&#127939; Hiking</span>
+          <span class="chip">&#127926; Lo-fi music</span>
+          <span class="chip">&#128218; Sci-fi novels</span>
+          <span class="chip">&#127386; Mechanical keyboards</span>
+          <span class="chip">&#9749; Specialty coffee</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-row">
+        <a class="btn-primary" href="contact.html">Get in touch &rarr;</a>
+        <a class="btn-secondary" href="projects.html">See my work</a>
+      </div>
+
+    </div>
+
+    <footer>
+      <span>&copy; 2026 Parker Doerr</span>
+      <div class="links">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+
+  </body>
+</html>
